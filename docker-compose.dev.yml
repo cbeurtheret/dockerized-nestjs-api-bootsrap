@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  api:
+    image: cbeurtheret/myhome-api
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+      - 9229:9229
+    command: npm run start:debug
+    env_file:
+      - .env
+    networks:
+      - devnet
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'myhome'
+      MYSQL_USER: 'myhome-user'
+      MYSQL_PASSWORD: '34XZBhrLotxdXcKl'
+      MYSQL_ROOT_PASSWORD: 'B5p49Wd98adDqjJY'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    networks:
+      - devnet
+    volumes:
+      - my-db-dev:/var/lib/mysql
+      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
+networks:
+  devnet:
+
+volumes:
+  my-db-dev:

@@ -1,0 +1,5 @@
+### Get Health check
+GET http://localhost:3000/health
+
+### Get metrics
+GET http://localhost:3000/metrics

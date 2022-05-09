@@ -1,0 +1,6 @@
+{
+    "editor.tabSize": 2,
+    "exportall.config.folderListener": [
+        "/src/messages/events"
+    ]
+}

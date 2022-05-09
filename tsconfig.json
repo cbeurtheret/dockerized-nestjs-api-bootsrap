@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@notifications/*": [
+        "src/notifications/*"
+      ],
+      "@places/*": [
+        "src/places/*"
+      ],
+      "@rooms/*": [
+        "src/rooms/*"
+      ],
+      "@devices/*": [
+        "src/devices/*"
+      ],
+      "@health/*": [
+        "src/health/*"
+      ],
+      "@commons/*": [
+        "src/commons/*"
+      ],
+      "@root/*": [
+        "src/../*"
+      ],
+      "@core/*": [
+        "src/*"
+      ]
+    },
+    "strict": true,
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": false
+  }
+}

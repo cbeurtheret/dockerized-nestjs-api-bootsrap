@@ -1,0 +1,48 @@
+### Get address from French government API
+GET https://api-adresse.data.gouv.fr/search/?q=76+avenue+de+paris+92320
+
+### Get all places
+GET http://localhost:3000/places
+
+### Create a new place
+POST http://localhost:3000/places
+
+{
+  "name": "Chez moi",
+  "address": {
+    "type": "FeatureCollection",
+    "version": "draft",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            2.293355,
+            48.806664
+          ]
+        },
+        "properties": {
+          "label": "76 Avenue de Paris 92320 Ch\u00e2tillon",
+          "score": 0.8831163636363636,
+          "housenumber": "76",
+          "id": "92020_7121_00076",
+          "name": "76 Avenue de Paris",
+          "postcode": "92320",
+          "citycode": "92020",
+          "x": 648101.81,
+          "y": 6856520,
+          "city": "Ch\u00e2tillon",
+          "context": "92, Hauts-de-Seine, \u00cele-de-France",
+          "type": "housenumber",
+          "importance": 0.71428,
+          "street": "Avenue de Paris"
+        }
+      }
+    ],
+    "attribution": "BAN",
+    "licence": "ETALAB-2.0",
+    "query": "76 avenue de paris 92320",
+    "limit": 5
+  }
+}

@@ -1,0 +1,13 @@
+### List all notifications
+GET http://localhost:3000/notifications
+
+### Create a new notification
+POST http://localhost:3000/notifications
+content-type: application/json
+
+{
+    "content": "Hello world!"
+}
+
+### Get a particular notification
+GET http://localhost:3000/notifications/5
