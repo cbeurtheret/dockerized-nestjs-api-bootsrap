@@ -12,6 +12,8 @@ The API was built using [Nest](https://github.com/nestjs/nest) framework.
 
 ## Prerequisite
 
+Node.js v14.x
+
 1. [Docker Engine](https://docs.docker.com/engine/install/) or [Docker Desktop](https://docs.docker.com/desktop/)
 1. [Docker Compose](https://docs.docker.com/compose/install/)
 1.  Nest CLI 
