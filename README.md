@@ -32,7 +32,7 @@ Node.js v14.x
 $ npm i
 
 # prepare .env file
-$ cp .env.example .env
+$ cp example.env .env
 # edit .env file and change TYPEORM_PASSWORD value
 ```
 
