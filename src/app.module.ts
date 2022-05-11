@@ -30,7 +30,7 @@ import * as Pkg from '@root/package.json';
         password: configService.get<string>('TYPEORM_PASSWORD'),
         database: configService.get<string>('TYPEORM_DATABASE'),
         autoLoadEntities: true,
-        synchronize: true,
+        synchronize: process.env.NODE_ENV === 'production' ? false:true,
         dropSchema: false,
       }),
       inject: [ConfigService],
