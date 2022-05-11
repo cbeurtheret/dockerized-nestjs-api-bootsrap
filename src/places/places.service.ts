@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { CreatePlaceDto, UpdatePlaceDto } from '@places/dto';
 import { Place } from '@places/entities';
 
@@ -34,7 +34,11 @@ export class PlacesService {
     return this.placesRepository.save(place);
   }
 
-  async remove(id: number): Promise<DeleteResult> {
-    return this.placesRepository.delete(id);
+  async remove(id: number): Promise<Place> {
+    const place = await this.findOne(id);
+    if (!place) {
+      return Promise.resolve(place);
+    }
+    return this.placesRepository.remove(place);
   }
 }

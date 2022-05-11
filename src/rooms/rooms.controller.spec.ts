@@ -4,11 +4,13 @@ import { RoomsService } from '@rooms/rooms.service';
 
 describe('RoomsController', () => {
   let controller: RoomsController;
+  let mockedRoomsService: Partial<RoomsService>;
 
   beforeEach(async () => {
+    mockedRoomsService = {};
     const module: TestingModule = await Test.createTestingModule({
       controllers: [RoomsController],
-      providers: [RoomsService],
+      providers: [{ provide: RoomsService, useValue: mockedRoomsService }],
     }).compile();
 
     controller = module.get<RoomsController>(RoomsController);

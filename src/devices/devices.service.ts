@@ -1,25 +1,45 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateDeviceDto, UpdateDeviceDto } from '@devices/dto';
+import { Device } from '@devices/entities';
 
 @Injectable()
 export class DevicesService {
-  create(createDeviceDto: CreateDeviceDto) {
-    return 'This action adds a new device';
+  constructor(
+    @InjectRepository(Device)
+    private devicesRepository: Repository<Device>,
+  ) {}
+
+  async create(createDeviceDto: CreateDeviceDto): Promise<Device> {
+    const device = this.devicesRepository.create(createDeviceDto);
+    return this.devicesRepository.save(device);
   }
 
-  findAll() {
-    return `This action returns all devices`;
+  async findAll(): Promise<Device[]> {
+    return this.devicesRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} device`;
+  async findOne(id: number): Promise<Device> {
+    return this.devicesRepository.findOneBy({ id });
   }
 
-  update(id: number, updateDeviceDto: UpdateDeviceDto) {
-    return `This action updates a #${id} device`;
+  async update(id: number, updateDeviceDto: UpdateDeviceDto): Promise<Device> {
+    const device = await this.findOne(id);
+    if (!device) {
+      throw new NotFoundException(
+        'Unable to update the device, because it can not be found',
+      );
+    }
+    this.devicesRepository.merge(device, updateDeviceDto);
+    return this.devicesRepository.save(device);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} device`;
+  async remove(id: number): Promise<Device> {
+    const device = await this.findOne(id);
+    if (!device) {
+      return Promise.resolve(device);
+    }
+    return this.devicesRepository.remove(device);
   }
 }

@@ -1,5 +1,5 @@
 import { ImATeapotException } from '@nestjs/common';
-import { ClassBuilder, Counter } from '@commons/decorators';
+import { Counter } from '@commons/decorators';
 
 @Counter({
   name: 'TEAPOT_EXCEPTION',

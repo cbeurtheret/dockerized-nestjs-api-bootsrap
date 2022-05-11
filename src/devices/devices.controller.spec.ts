@@ -4,11 +4,13 @@ import { DevicesService } from '@devices/devices.service';
 
 describe('DevicesController', () => {
   let controller: DevicesController;
+  let mockedDevicesService: Partial<DevicesService>;
 
   beforeEach(async () => {
+    mockedDevicesService = {};
     const module: TestingModule = await Test.createTestingModule({
       controllers: [DevicesController],
-      providers: [DevicesService],
+      providers: [{ provide: DevicesService, useValue: mockedDevicesService }],
     }).compile();
 
     controller = module.get<DevicesController>(DevicesController);

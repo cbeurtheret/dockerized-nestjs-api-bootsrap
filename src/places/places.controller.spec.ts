@@ -10,10 +10,7 @@ describe('PlacesController', () => {
     mockedPlacesService = {};
     const module: TestingModule = await Test.createTestingModule({
       controllers: [PlacesController],
-      providers: [
-        PlacesService,
-        { provide: PlacesService, useValue: mockedPlacesService },
-      ],
+      providers: [{ provide: PlacesService, useValue: mockedPlacesService }],
     }).compile();
 
     controller = module.get<PlacesController>(PlacesController);
